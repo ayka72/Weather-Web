@@ -1,5 +1,7 @@
+//ЗАПРОС НА ПРОГНОЗ
+
 function getWeather() {
-    const apiKey = '540e1ca292dc20d6afaa2de50ab11e05';
+    const apiKey = 'mykey';
     const cityInput = document.getElementById('cityInput');
     const weatherInfo = document.getElementById('weatherInfo');
 
@@ -10,12 +12,15 @@ function getWeather() {
             .then(response => response.json())
             .then(data => {
                 if (data.main && data.main.temp && data.weather && data.weather[0] && data.weather[0].description) {
-                    const temperature = data.main.temp;
+                    const temperature = Math.round(data.main.temp);
                     const description = data.weather[0].description;
                     const city = data.name;
 
-                    const weatherText = `Temperature in ${city}: ${temperature}°C, ${description}.`;
-                    weatherInfo.textContent = weatherText;
+                    const weatherText = `
+                        <p class="temperature">Temperature in ${city}: ${temperature}°C</p>
+                        <p class="description">${description}.</p>
+                    `;
+                    weatherInfo.innerHTML = weatherText;
                 } else {
                     console.error('Error fetching weather data: Unexpected response format');
                     weatherInfo.textContent = 'Error fetching weather data. Please try again.';
@@ -30,11 +35,10 @@ function getWeather() {
     }
 }
 
-
-
+//FUNCTION COLOR
 
 function changeColors() {
-    const gradientBackground = document.getElementsById('gradientBackground');
+    const gradientBackground = document.getElementById('gradientBackground');
     const colors = [
         'rgb(76, 142, 255)',
         'rgb(255, 136, 255)',
