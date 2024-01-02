@@ -34,7 +34,7 @@ function getWeather() {
 
 
 function changeColors() {
-    const gradientBackground = document.getElementById('gradientBackground');
+    const gradientBackground = document.getElementsById('gradientBackground');
     const colors = [
         'rgb(76, 142, 255)',
         'rgb(255, 136, 255)',
@@ -48,11 +48,6 @@ function changeColors() {
     } else {
         console.error('Element with id "gradientBackground" not found.');
     }
-
-/*     setInterval(() => {
-        gradientBackground.style.background = `linear-gradient(45deg, ${colors[currentIndex]}, ${colors[(currentIndex + 1) % colors.length]}, ${colors[(currentIndex + 2) % colors.length]})`;
-        currentIndex = (currentIndex + 1) % colors.length;
-    }, 5000); */
 }
 
 
